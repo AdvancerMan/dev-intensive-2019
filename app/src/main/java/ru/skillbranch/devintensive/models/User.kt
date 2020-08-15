@@ -1,5 +1,6 @@
 package ru.skillbranch.devintensive.models
 
+import ru.skillbranch.devintensive.utils.Utils
 import java.util.*
 
 data class User(
@@ -14,9 +15,9 @@ data class User(
 ) {
     companion object Factory {
         private var maxId = -1
-        fun makeUser(fullName: String): User {
-            val words = fullName.split(Regex("""\\s"""))
-            return User("${maxId++}", words.getOrNull(0), words.getOrNull(1), null)
+        fun makeUser(fullName: String?): User {
+            val (firstName, lastName) = Utils.parseFullName(fullName)
+            return User("${maxId++}", firstName, lastName, null)
         }
     }
 }
