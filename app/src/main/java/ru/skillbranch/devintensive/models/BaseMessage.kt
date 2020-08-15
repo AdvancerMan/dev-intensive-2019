@@ -1,5 +1,6 @@
 package ru.skillbranch.devintensive.models
 
+import ru.skillbranch.devintensive.extensions.humanizeDiff
 import java.util.*
 
 abstract class BaseMessage(
@@ -11,10 +12,9 @@ abstract class BaseMessage(
 ) {
     abstract fun formatMessage(): String
 
-    // TODO date.humanizeDiff()
     protected fun formatMessage(messageType: String) =
         (from?.firstName ?: "Неизвестный пользователь") +
-                " (id: $id) ${if (isIncoming) "получил" else "отправил"} $messageType $date"
+                " (id: $id) ${if (isIncoming) "получил" else "отправил"} $messageType ${date.humanizeDiff()}"
 
     companion object AbstractFactory {
         private var maxId = -1
