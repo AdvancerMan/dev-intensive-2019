@@ -1,11 +1,11 @@
 package ru.skillbranch.devintensive.utils
 
 object Utils {
-    private val whitespaces = Regex("""(\\s)*""")
+    val whitespacesRegex = Regex("""(\s)+""")
 
     fun parseFullName(fullName: String?) =
         fullName
-            ?.split(whitespaces)
+            ?.split(whitespacesRegex)
             ?.filterNot { it.isBlank() }
             ?.let { it.getOrNull(0) to it.getOrNull(1) }
             ?: null to null
@@ -54,7 +54,7 @@ object Utils {
 
     fun transliteration(payload: String, divider: String = " ") =
         payload
-            .split(whitespaces)
+            .split(whitespacesRegex)
             .filterNot { it.isBlank() }
             .joinToString(divider) { word ->
                 word.map { dictionary[it] ?: it.toString() }.joinToString("")
