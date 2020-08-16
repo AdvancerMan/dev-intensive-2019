@@ -14,7 +14,7 @@ abstract class BaseMessage(
 
     protected fun formatMessage(messageType: String) =
         (from?.firstName ?: "Неизвестный пользователь") +
-                " (id: $id) ${if (isIncoming) "получил" else "отправил"} $messageType ${date.humanizeDiff()}"
+                " ${if (isIncoming) "получил" else "отправил"} $messageType ${date.humanizeDiff()}"
 
     companion object AbstractFactory {
         private var maxId = -1

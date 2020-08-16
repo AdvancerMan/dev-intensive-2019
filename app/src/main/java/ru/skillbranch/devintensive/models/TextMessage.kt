@@ -10,5 +10,5 @@ class TextMessage(
     date: Date = Date(),
     val text: String? = null
 ) : BaseMessage(id, from, chat, isIncoming, date) {
-    override fun formatMessage() = formatMessage("сообщение: \"$text\"")
+    override fun formatMessage() = formatMessage("сообщение \"$text\"")
 }

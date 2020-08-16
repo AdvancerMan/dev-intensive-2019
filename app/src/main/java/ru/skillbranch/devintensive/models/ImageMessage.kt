@@ -10,5 +10,5 @@ class ImageMessage(
     date: Date = Date(),
     val image: String? = null
 ) : BaseMessage(id, from, chat, isIncoming, date) {
-    override fun formatMessage() = formatMessage("изображение: \"$image\"")
+    override fun formatMessage() = formatMessage("изображение \"$image\"")
 }

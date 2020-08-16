@@ -17,7 +17,7 @@ data class User(
         private var maxId = -1
         fun makeUser(fullName: String?): User {
             val (firstName, lastName) = Utils.parseFullName(fullName)
-            return User("${maxId++}", firstName, lastName, null)
+            return User("${++maxId}", firstName, lastName, null)
         }
     }
 
@@ -31,14 +31,14 @@ data class User(
         var lastVisit: Date? = Date()
         var isOnline: Boolean = false
 
-        fun id(id: String) { this.id = id }
-        fun firstName(firstName: String?) { this.firstName = firstName }
-        fun lastName(lastName: String?) { this.lastName = lastName }
-        fun avatar(avatar: String?) { this.avatar = avatar }
-        fun rating(rating: Int) { this.rating = rating }
-        fun respect(respect: Int) { this.respect = respect }
-        fun lastVisit(lastVisit: Date?) { this.lastVisit = lastVisit }
-        fun isOnline(isOnline: Boolean) { this.isOnline = isOnline }
+        fun id(id: String) = apply { this.id = id }
+        fun firstName(firstName: String?) = apply { this.firstName = firstName }
+        fun lastName(lastName: String?) = apply { this.lastName = lastName }
+        fun avatar(avatar: String?) = apply { this.avatar = avatar }
+        fun rating(rating: Int) = apply { this.rating = rating }
+        fun respect(respect: Int) = apply { this.respect = respect }
+        fun lastVisit(lastVisit: Date?) = apply { this.lastVisit = lastVisit }
+        fun isOnline(isOnline: Boolean) = apply { this.isOnline = isOnline }
         fun build() = User(id, firstName, lastName, avatar, rating, respect, lastVisit, isOnline)
     }
 }

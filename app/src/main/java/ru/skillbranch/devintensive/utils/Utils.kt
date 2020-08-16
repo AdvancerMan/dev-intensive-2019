@@ -1,5 +1,7 @@
 package ru.skillbranch.devintensive.utils
 
+import java.util.*
+
 object Utils {
     val whitespacesRegex = Regex("""(\s)+""")
 
@@ -16,7 +18,7 @@ object Utils {
     fun toInitials(firstName: String?, lastName: String?) =
         (toInitial(firstName) + toInitial(lastName)).ifEmpty { null }
 
-    private val dictionary = mapOf(
+    private val dictionary: Map<Char, String> = mutableListOf(
         'а' to "a",
         'б' to "b",
         'в' to "v",
@@ -51,6 +53,12 @@ object Utils {
         'ю' to "yu",
         'я' to "ya"
     )
+        .apply { addAll(map {
+            it.first.toUpperCase() to
+                    (it.second.getOrNull(0)?.toUpperCase()?.toString() ?: "") +
+                    it.second.drop(1)
+        }) }
+        .toMap()
 
     fun transliteration(payload: String, divider: String = " ") =
         payload
